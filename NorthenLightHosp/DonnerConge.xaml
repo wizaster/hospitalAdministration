@@ -1,0 +1,19 @@
+﻿<Window x:Class="NorthenLightHosp.DonnerConge"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NorthenLightHosp"
+        mc:Ignorable="d"
+        Title="DonnerConge" Height="126.881" Width="320.43">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="63*"/>
+            <ColumnDefinition Width="94*"/>
+        </Grid.ColumnDefinitions>
+        <DatePicker x:Name="conge" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" SelectedDateChanged="conge_SelectedDateChanged"/>
+        <Button x:Name="btnAppliquer" Content="Appliquer" Margin="4.6,43,106.4,0" VerticalAlignment="Top" Grid.Column="1" Click="btnAppliquer_Click" IsEnabled="False"/>
+        <Button x:Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="102.6,43,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="btnAnnuler_Click"/>
+
+    </Grid>
+</Window>

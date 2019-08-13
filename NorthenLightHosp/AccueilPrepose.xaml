@@ -1,0 +1,26 @@
+﻿<Window x:Class="NorthenLightHosp.AccueilPrepose"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NorthenLightHosp"
+        mc:Ignorable="d"
+        Title="AccueilPrepose" Height="363.428" Width="438.149">
+    <Grid>
+        <Label x:Name="lblGreeting" Content="Bonjour" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Trouver patient : " HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtRecherche" HorizontalAlignment="Left" Height="23" Margin="114,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295" KeyUp="txtRecherche_KeyUp"/>
+        <Button x:Name="btnMiseAJour" Content="Mettre A jour informations" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" Width="151" IsEnabled="False" Click="btnMiseAJour_Click"/>
+        <Button x:Name="btnAdmission" Content="Nouvelle Admission" HorizontalAlignment="Left" Margin="10,256,0,0" VerticalAlignment="Top" Width="151" IsEnabled="False" Click="btnAdmission_Click"/>
+        <Button x:Name="btnNouveauPatient" Content="Nouveau Patient" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top" Width="151" Click="btnNouveauPatient_Click"/>
+        <DataGrid x:Name="dgPatientTrouver" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Height="148" Width="399"
+                  ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionChanged="dgPatientTrouver_SelectionChanged" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="prenom" Binding="{Binding prenom}" />
+                <DataGridTextColumn Header="nom" Binding="{Binding nom}" />
+                <DataGridTextColumn Header="date de naissance" Binding="{Binding date_naissance}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

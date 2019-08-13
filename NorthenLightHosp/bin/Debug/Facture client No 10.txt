@@ -1,0 +1,16 @@
+
+ telephone  au tarif journalier de 7.50
+ Date de debut : 7/15/2019 12:00:00 AM
+ Date de fin : 1/31/2020 12:00:00 AM
+ Total : 1500.00
+------------------------------------------
+ televiseur   au tarif journalier de 42.50
+ Date de debut : 7/15/2019 12:00:00 AM
+ Date de fin : 1/31/2020 12:00:00 AM
+ Total : 8500.00
+------------------------------------------
+ chambre prive  au tarif journalier de 571.00
+ Date de debut : 7/15/2019 12:00:00 AM
+ Date de fin : 1/31/2020 12:00:00 AM
+ Total : 114200.00
+------------------------------------------

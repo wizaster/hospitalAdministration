@@ -1,0 +1,45 @@
+﻿<Window x:Class="NorthenLightHosp.NouveauPatient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NorthenLightHosp"
+        mc:Ignorable="d"
+        Title="Informations Patient" Height="398.924" Width="404.301">
+    <Grid Margin="0,0,-0.4,-2.8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="99*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="label" Content="Fiche nouveau patient" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <GroupBox x:Name="groupBox" Header="Informations personnelles" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Height="158" Width="370" Grid.ColumnSpan="2">
+            <Grid HorizontalAlignment="Left" Height="138" Margin="10,10,-3.2,-12" VerticalAlignment="Top" Width="350">
+                <Label x:Name="label1" Content="Nom :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtPrenom" HorizontalAlignment="Left" Height="23" Margin="84,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+                <Label x:Name="label2" Content="Prenom :" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label3" Content="Date de naissance :" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                <DatePicker x:Name="dateNais" HorizontalAlignment="Left" Margin="122,74,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtNom" HorizontalAlignment="Left" Height="23" Margin="84,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+                <GroupBox x:Name="gBoxSexe" Header="Sexe" HorizontalAlignment="Left" Margin="259,10,0,0" VerticalAlignment="Top" Height="79" Width="81">
+                    <Grid Height="55" Margin="-3,-2,-2.2,0" VerticalAlignment="Top">
+                        <RadioButton x:Name="rbHomme" Content="Homme" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
+                        <RadioButton x:Name="rbFemme" Content="Femme" HorizontalAlignment="Left" Margin="0,26,0,0" VerticalAlignment="Top"/>
+                    </Grid>
+                </GroupBox>
+                <Label x:Name="label6" Content="Proche parent :" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtParent" HorizontalAlignment="Left" Height="23" Margin="100,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="groupBoxAss" Header="Assurance" HorizontalAlignment="Left" Margin="10,228,0,0" VerticalAlignment="Top" Height="110" Width="370" Grid.ColumnSpan="2" IsEnabled="False">
+            <Grid HorizontalAlignment="Left" Height="75" Margin="10,10,-3.2,0" VerticalAlignment="Top" Width="350">
+                <Label x:Name="label4" Content="Nom societe aassurance :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label5" Content="No de la police d'assurance :" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtAssNoPol" HorizontalAlignment="Left" Height="23" Margin="177,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
+                <TextBox x:Name="txtAssNom" HorizontalAlignment="Left" Height="23" Margin="177,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="104,343,0,0" VerticalAlignment="Top" Width="75" Click="btnAnnuler_Click"/>
+        <Button x:Name="btnValider" Content="Valider" HorizontalAlignment="Left" Margin="0,343,0,0" VerticalAlignment="Top" Width="75" Click="btnValider_Click" Grid.Column="1"/>
+        <CheckBox x:Name="ckbxAss" Content="Cocher si Assurances" HorizontalAlignment="Left" Margin="10,208,0,0" VerticalAlignment="Top" Checked="ckbxAss_Checked" Unchecked="ckbxAss_Unchecked"/>
+    </Grid>
+</Window>

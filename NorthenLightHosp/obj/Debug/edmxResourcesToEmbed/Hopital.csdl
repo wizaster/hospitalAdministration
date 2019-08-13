@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NorthenLightsHopitalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="accomodation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tarif_quotidien" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="accomodation_sejour" Relationship="Self.FK_accomodation_sejour_accomodation" FromRole="accomodation" ToRole="accomodation_sejour" />
+    <NavigationProperty Name="lits" Relationship="Self.FK_lit_accomodation" FromRole="accomodation" ToRole="lit" />
+  </EntityType>
+  <EntityType Name="accomodation_sejour">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_dossier_admission" Type="Int32" Nullable="false" />
+    <Property Name="id_accomodation" Type="Int32" Nullable="false" />
+    <Property Name="date_debut" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="date_fin" Type="DateTime" Precision="0" />
+    <Property Name="upgrade_sans_frais" Type="Boolean" />
+    <NavigationProperty Name="accomodation" Relationship="Self.FK_accomodation_sejour_accomodation" FromRole="accomodation_sejour" ToRole="accomodation" />
+    <NavigationProperty Name="dossier_admission" Relationship="Self.FK_accomodation_sejour_admission" FromRole="accomodation_sejour" ToRole="dossier_admission" />
+  </EntityType>
+  <EntityType Name="assurance">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="no_police" Type="Int32" Nullable="false" />
+    <Property Name="nom_societe_assurance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_client" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="patient" Relationship="Self.FK_assurance_patient" FromRole="assurance" ToRole="patient" />
+  </EntityType>
+  <EntityType Name="commentaire_patient">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_client" Type="Int32" />
+    <Property Name="id_medecin" Type="Int32" />
+    <Property Name="commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="employe" Relationship="Self.FK_commentaire_patient_medecin" FromRole="commentaire_patient" ToRole="employe" />
+    <NavigationProperty Name="patient" Relationship="Self.FK_commentaire_patient_patient" FromRole="commentaire_patient" ToRole="patient" />
+  </EntityType>
+  <EntityType Name="departement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="lits" Relationship="Self.FK_lit_departement" FromRole="departement" ToRole="lit" />
+  </EntityType>
+  <EntityType Name="dossier_admission">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_client" Type="Int32" Nullable="false" />
+    <Property Name="date_admission" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="date_conge" Type="DateTime" Precision="0" />
+    <Property Name="raison_admission" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="id_lit" Type="Int32" Nullable="false" />
+    <Property Name="id_medecin" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="accomodation_sejour" Relationship="Self.FK_accomodation_sejour_admission" FromRole="dossier_admission" ToRole="accomodation_sejour" />
+    <NavigationProperty Name="patient" Relationship="Self.FK_dossier_admission_client" FromRole="dossier_admission" ToRole="patient" />
+    <NavigationProperty Name="lit" Relationship="Self.FK_dossier_admission_lit" FromRole="dossier_admission" ToRole="lit" />
+    <NavigationProperty Name="employe" Relationship="Self.FK_dossier_admission_medecin" FromRole="dossier_admission" ToRole="employe" />
+  </EntityType>
+  <EntityType Name="employe">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nom_utilisateur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mot_passe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_role" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="commentaire_patient" Relationship="Self.FK_commentaire_patient_medecin" FromRole="employe" ToRole="commentaire_patient" />
+    <NavigationProperty Name="dossier_admission" Relationship="Self.FK_dossier_admission_medecin" FromRole="employe" ToRole="dossier_admission" />
+    <NavigationProperty Name="role" Relationship="Self.FK_employe_role" FromRole="employe" ToRole="role" />
+  </EntityType>
+  <EntityType Name="lit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_departement" Type="Int32" Nullable="false" />
+    <Property Name="id_accomodation" Type="Int32" Nullable="false" />
+    <Property Name="occupe" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="accomodation" Relationship="Self.FK_lit_accomodation" FromRole="lit" ToRole="accomodation" />
+    <NavigationProperty Name="departement" Relationship="Self.FK_lit_departement" FromRole="lit" ToRole="departement" />
+    <NavigationProperty Name="dossier_admission" Relationship="Self.FK_dossier_admission_lit" FromRole="lit" ToRole="dossier_admission" />
+    <NavigationProperty Name="lit1" Relationship="Self.FK_lit_lit" FromRole="lit" ToRole="lit1" />
+    <NavigationProperty Name="lit2" Relationship="Self.FK_lit_lit" FromRole="lit1" ToRole="lit" />
+  </EntityType>
+  <EntityType Name="patient">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date_naissance" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="proche_parent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sexe" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="assurances" Relationship="Self.FK_assurance_patient" FromRole="patient" ToRole="assurance" />
+    <NavigationProperty Name="commentaire_patient" Relationship="Self.FK_commentaire_patient_patient" FromRole="patient" ToRole="commentaire_patient" />
+    <NavigationProperty Name="dossier_admission" Relationship="Self.FK_dossier_admission_client" FromRole="patient" ToRole="dossier_admission" />
+  </EntityType>
+  <EntityType Name="raison_admission">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="employes" Relationship="Self.FK_employe_role" FromRole="role" ToRole="employe" />
+  </EntityType>
+  <EntityType Name="View_accomodation_information">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="tarif_quotidien" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="id_dossier_admission" Type="Int32" Nullable="false" />
+    <Property Name="id_accomodation" Type="Int32" Nullable="false" />
+    <Property Name="date_debut" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="date_fin" Type="DateTime" Precision="0" />
+    <Property Name="upgrade_sans_frais" Type="Boolean" />
+    <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View_dossier_nom_prenom">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nom" Type="String" MaxLength="45" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="prenom" Type="String" MaxLength="45" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="id_client" Type="Int32" Nullable="false" />
+    <Property Name="date_admission" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="date_conge" Type="DateTime" Precision="0" />
+    <Property Name="raison_admission" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="id_lit" Type="Int32" Nullable="false" />
+    <Property Name="id_medecin" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View_lits_informations">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="departement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="id_departement" Type="Int32" Nullable="false" />
+    <Property Name="id_accomodation" Type="Int32" Nullable="false" />
+    <Property Name="occupe" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View_nom_medecin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="prenom" Type="String" MaxLength="45" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="45" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="id_client" Type="Int32" Nullable="false" />
+    <Property Name="date_admission" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="date_conge" Type="DateTime" Precision="0" />
+    <Property Name="raison_admission" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="id_lit" Type="Int32" Nullable="false" />
+    <Property Name="id_medecin" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_accomodation_sejour_accomodation">
+    <End Role="accomodation" Type="Self.accomodation" Multiplicity="1" />
+    <End Role="accomodation_sejour" Type="Self.accomodation_sejour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="accomodation">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="accomodation_sejour">
+        <PropertyRef Name="id_accomodation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_lit_accomodation">
+    <End Role="accomodation" Type="Self.accomodation" Multiplicity="1" />
+    <End Role="lit" Type="Self.lit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="accomodation">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="lit">
+        <PropertyRef Name="id_accomodation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_accomodation_sejour_admission">
+    <End Role="dossier_admission" Type="Self.dossier_admission" Multiplicity="1" />
+    <End Role="accomodation_sejour" Type="Self.accomodation_sejour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dossier_admission">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="accomodation_sejour">
+        <PropertyRef Name="id_dossier_admission" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_assurance_patient">
+    <End Role="patient" Type="Self.patient" Multiplicity="1" />
+    <End Role="assurance" Type="Self.assurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="patient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="assurance">
+        <PropertyRef Name="id_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_commentaire_patient_medecin">
+    <End Role="employe" Type="Self.employe" Multiplicity="0..1" />
+    <End Role="commentaire_patient" Type="Self.commentaire_patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employe">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="commentaire_patient">
+        <PropertyRef Name="id_medecin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_commentaire_patient_patient">
+    <End Role="patient" Type="Self.patient" Multiplicity="0..1" />
+    <End Role="commentaire_patient" Type="Self.commentaire_patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="patient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="commentaire_patient">
+        <PropertyRef Name="id_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_lit_departement">
+    <End Role="departement" Type="Self.departement" Multiplicity="1" />
+    <End Role="lit" Type="Self.lit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="departement">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="lit">
+        <PropertyRef Name="id_departement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dossier_admission_client">
+    <End Role="patient" Type="Self.patient" Multiplicity="1" />
+    <End Role="dossier_admission" Type="Self.dossier_admission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="patient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dossier_admission">
+        <PropertyRef Name="id_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dossier_admission_lit">
+    <End Role="lit" Type="Self.lit" Multiplicity="1" />
+    <End Role="dossier_admission" Type="Self.dossier_admission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dossier_admission">
+        <PropertyRef Name="id_lit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dossier_admission_medecin">
+    <End Role="employe" Type="Self.employe" Multiplicity="1" />
+    <End Role="dossier_admission" Type="Self.dossier_admission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employe">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="dossier_admission">
+        <PropertyRef Name="id_medecin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_employe_role">
+    <End Role="role" Type="Self.role" Multiplicity="1" />
+    <End Role="employe" Type="Self.employe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employe">
+        <PropertyRef Name="id_role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_lit_lit">
+    <End Role="lit" Type="Self.lit" Multiplicity="1" />
+    <End Role="lit1" Type="Self.lit" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="lit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="lit1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NorthenLightsHopitalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="accomodations" EntityType="Self.accomodation" />
+    <EntitySet Name="accomodation_sejour" EntityType="Self.accomodation_sejour" />
+    <EntitySet Name="assurances" EntityType="Self.assurance" />
+    <EntitySet Name="commentaire_patient" EntityType="Self.commentaire_patient" />
+    <EntitySet Name="departements" EntityType="Self.departement" />
+    <EntitySet Name="dossier_admission" EntityType="Self.dossier_admission" />
+    <EntitySet Name="employes" EntityType="Self.employe" />
+    <EntitySet Name="lits" EntityType="Self.lit" />
+    <EntitySet Name="patients" EntityType="Self.patient" />
+    <EntitySet Name="raison_admission" EntityType="Self.raison_admission" />
+    <EntitySet Name="roles" EntityType="Self.role" />
+    <EntitySet Name="View_accomodation_information" EntityType="Self.View_accomodation_information" />
+    <EntitySet Name="View_dossier_nom_prenom" EntityType="Self.View_dossier_nom_prenom" />
+    <EntitySet Name="View_lits_informations" EntityType="Self.View_lits_informations" />
+    <EntitySet Name="View_nom_medecin" EntityType="Self.View_nom_medecin" />
+    <AssociationSet Name="FK_accomodation_sejour_accomodation" Association="Self.FK_accomodation_sejour_accomodation">
+      <End Role="accomodation" EntitySet="accomodations" />
+      <End Role="accomodation_sejour" EntitySet="accomodation_sejour" />
+    </AssociationSet>
+    <AssociationSet Name="FK_lit_accomodation" Association="Self.FK_lit_accomodation">
+      <End Role="accomodation" EntitySet="accomodations" />
+      <End Role="lit" EntitySet="lits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_accomodation_sejour_admission" Association="Self.FK_accomodation_sejour_admission">
+      <End Role="dossier_admission" EntitySet="dossier_admission" />
+      <End Role="accomodation_sejour" EntitySet="accomodation_sejour" />
+    </AssociationSet>
+    <AssociationSet Name="FK_assurance_patient" Association="Self.FK_assurance_patient">
+      <End Role="patient" EntitySet="patients" />
+      <End Role="assurance" EntitySet="assurances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_commentaire_patient_medecin" Association="Self.FK_commentaire_patient_medecin">
+      <End Role="employe" EntitySet="employes" />
+      <End Role="commentaire_patient" EntitySet="commentaire_patient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_commentaire_patient_patient" Association="Self.FK_commentaire_patient_patient">
+      <End Role="patient" EntitySet="patients" />
+      <End Role="commentaire_patient" EntitySet="commentaire_patient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_lit_departement" Association="Self.FK_lit_departement">
+      <End Role="departement" EntitySet="departements" />
+      <End Role="lit" EntitySet="lits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dossier_admission_client" Association="Self.FK_dossier_admission_client">
+      <End Role="patient" EntitySet="patients" />
+      <End Role="dossier_admission" EntitySet="dossier_admission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dossier_admission_lit" Association="Self.FK_dossier_admission_lit">
+      <End Role="lit" EntitySet="lits" />
+      <End Role="dossier_admission" EntitySet="dossier_admission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dossier_admission_medecin" Association="Self.FK_dossier_admission_medecin">
+      <End Role="employe" EntitySet="employes" />
+      <End Role="dossier_admission" EntitySet="dossier_admission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_employe_role" Association="Self.FK_employe_role">
+      <End Role="role" EntitySet="roles" />
+      <End Role="employe" EntitySet="employes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_lit_lit" Association="Self.FK_lit_lit">
+      <End Role="lit" EntitySet="lits" />
+      <End Role="lit1" EntitySet="lits" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

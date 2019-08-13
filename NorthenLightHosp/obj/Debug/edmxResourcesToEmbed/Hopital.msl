@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NorthenLightsHopitalModelStoreContainer" CdmEntityContainer="NorthenLightsHopitalEntities">
+    <EntitySetMapping Name="accomodations">
+      <EntityTypeMapping TypeName="NorthenLightsHopitalModel.accomodation">
+        <MappingFragment StoreEntitySet="accomodation">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="designation" ColumnName="designation" />
+          <ScalarProperty Name="tarif_quotidien" ColumnName="tarif_quotidien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="accomodation_sejour">
+      <EntityTypeMapping TypeName="NorthenLightsHopitalModel.accomodation_sejour">
+        <MappingFragment StoreEntitySet="accomodation_sejour">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_dossier_admission" ColumnName="id_dossier_admission" />
+          <ScalarProperty Name="id_accomodation" ColumnName="id_accomodation" />
+          <ScalarProperty Name="date_debut" ColumnName="date_debut" />
+          <ScalarProperty Name="date_fin" ColumnName="date_fin" />
+          <ScalarProperty Name="upgrade_sans_frais" ColumnName="upgrade_sans_frais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="assurances">
+      <EntityTypeMapping TypeName="NorthenLightsHopitalModel.assurance">
+        <MappingFragment StoreEntitySet="assurance">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="no_police" ColumnName="no_police" />
+          <ScalarProperty Name="nom_societe_assurance" ColumnName="nom_societe_assurance" />
+          <ScalarProperty Name="id_client" ColumnName="id_client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="commentaire_patient">
+      <EntityTypeMapping TypeName="NorthenLightsHopitalModel.commentaire_patient">
+        <MappingFragment StoreEntitySet="commentaire_patient">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_client" ColumnName="id_client" />
+          <ScalarProperty Name="id_medecin" ColumnName="id_medecin" />
+          <ScalarProperty Name="commentaire" ColumnName="commentaire" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departements">
+      <EntityTypeMapping TypeName="NorthenLightsHopitalModel.departement">
+        <MappingFragment StoreEntitySet="departement">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="designation" ColumnName="designation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dossier_admission">
+      <EntityTypeMapping TypeName="NorthenLightsHopitalModel.dossier_admission">
+        <MappingFragment StoreEntitySet="dossier_admission">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_client" ColumnName="id_client" />
+          <ScalarProperty Name="date_admission" ColumnName="date_admission" />
+          <ScalarProperty Name="date_conge" ColumnName="date_conge" />
+          <ScalarProperty Name="raison_admission" ColumnName="raison_admission" />
+          <ScalarProperty Name="id_lit" ColumnName="id_lit" />
+          <ScalarProperty Name="id_medecin" ColumnName="id_medecin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employes">
+      <EntityTypeMapping TypeName="NorthenLightsHopitalModel.employe">
+        <MappingFragment StoreEntitySet="employe">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="nom_utilisateur" ColumnName="nom_utilisateur" />
+          <ScalarProperty Name="mot_passe" ColumnName="mot_passe" />
+          <ScalarProperty Name="id_role" ColumnName="id_role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lits">
+      <EntityTypeMapping TypeName="NorthenLightsHopitalModel.lit">
+        <MappingFragment StoreEntitySet="lit">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_departement" ColumnName="id_departement" />
+          <ScalarProperty Name="id_accomodation" ColumnName="id_accomodation" />
+          <ScalarProperty Name="occupe" ColumnName="occupe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="patients">
+      <EntityTypeMapping TypeName="NorthenLightsHopitalModel.patient">
+        <MappingFragment StoreEntitySet="patient">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="date_naissance" ColumnName="date_naissance" />
+          <ScalarProperty Name="proche_parent" ColumnName="proche_parent" />
+          <ScalarProperty Name="sexe" ColumnName="sexe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="raison_admission">
+      <EntityTypeMapping TypeName="NorthenLightsHopitalModel.raison_admission">
+        <MappingFragment StoreEntitySet="raison_admission">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="designation" ColumnName="designation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="NorthenLightsHopitalModel.role">
+        <MappingFragment StoreEntitySet="role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="designation" ColumnName="designation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_accomodation_information">
+      <EntityTypeMapping TypeName="NorthenLightsHopitalModel.View_accomodation_information">
+        <MappingFragment StoreEntitySet="View_accomodation_information">
+          <ScalarProperty Name="tarif_quotidien" ColumnName="tarif_quotidien" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_dossier_admission" ColumnName="id_dossier_admission" />
+          <ScalarProperty Name="id_accomodation" ColumnName="id_accomodation" />
+          <ScalarProperty Name="date_debut" ColumnName="date_debut" />
+          <ScalarProperty Name="date_fin" ColumnName="date_fin" />
+          <ScalarProperty Name="upgrade_sans_frais" ColumnName="upgrade_sans_frais" />
+          <ScalarProperty Name="designation" ColumnName="designation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_dossier_nom_prenom">
+      <EntityTypeMapping TypeName="NorthenLightsHopitalModel.View_dossier_nom_prenom">
+        <MappingFragment StoreEntitySet="View_dossier_nom_prenom">
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_client" ColumnName="id_client" />
+          <ScalarProperty Name="date_admission" ColumnName="date_admission" />
+          <ScalarProperty Name="date_conge" ColumnName="date_conge" />
+          <ScalarProperty Name="raison_admission" ColumnName="raison_admission" />
+          <ScalarProperty Name="id_lit" ColumnName="id_lit" />
+          <ScalarProperty Name="id_medecin" ColumnName="id_medecin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_lits_informations">
+      <EntityTypeMapping TypeName="NorthenLightsHopitalModel.View_lits_informations">
+        <MappingFragment StoreEntitySet="View_lits_informations">
+          <ScalarProperty Name="occupe" ColumnName="occupe" />
+          <ScalarProperty Name="id_accomodation" ColumnName="id_accomodation" />
+          <ScalarProperty Name="id_departement" ColumnName="id_departement" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="departement" ColumnName="departement" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_nom_medecin">
+      <EntityTypeMapping TypeName="NorthenLightsHopitalModel.View_nom_medecin">
+        <MappingFragment StoreEntitySet="View_nom_medecin">
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_client" ColumnName="id_client" />
+          <ScalarProperty Name="date_admission" ColumnName="date_admission" />
+          <ScalarProperty Name="date_conge" ColumnName="date_conge" />
+          <ScalarProperty Name="raison_admission" ColumnName="raison_admission" />
+          <ScalarProperty Name="id_lit" ColumnName="id_lit" />
+          <ScalarProperty Name="id_medecin" ColumnName="id_medecin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

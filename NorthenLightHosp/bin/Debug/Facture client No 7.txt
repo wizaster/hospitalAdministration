@@ -1,0 +1,6 @@
+
+ chambre standard au tarif journalier de 0.00
+ Date de debut : 7/15/2019 12:00:00 AM
+ Date de fin : 7/17/2019 12:00:00 AM
+ Total : 0.00
+------------------------------------------

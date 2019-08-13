@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2b4bf2409a9c423193de45b62a14f24f" Name="Diagram1">
+        <EntityTypeShape EntityType="NorthenLightsHopitalModel.accomodation" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NorthenLightsHopitalModel.accomodation_sejour" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NorthenLightsHopitalModel.assurance" Width="1.5" PointX="8.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NorthenLightsHopitalModel.commentaire_patient" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="NorthenLightsHopitalModel.departement" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NorthenLightsHopitalModel.dossier_admission" Width="1.5" PointX="8.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="NorthenLightsHopitalModel.employe" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="NorthenLightsHopitalModel.lit" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NorthenLightsHopitalModel.patient" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NorthenLightsHopitalModel.raison_admission" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NorthenLightsHopitalModel.role" Width="1.5" PointX="3.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NorthenLightsHopitalModel.View_accomodation_information" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NorthenLightsHopitalModel.View_dossier_nom_prenom" Width="1.5" PointX="10.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NorthenLightsHopitalModel.View_lits_informations" Width="1.5" PointX="10.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NorthenLightsHopitalModel.View_nom_medecin" Width="1.5" PointX="10.75" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="NorthenLightsHopitalModel.FK_accomodation_sejour_accomodation" ManuallyRouted="false" />
+        <AssociationConnector Association="NorthenLightsHopitalModel.FK_lit_accomodation" ManuallyRouted="false" />
+        <AssociationConnector Association="NorthenLightsHopitalModel.FK_accomodation_sejour_admission" ManuallyRouted="false" />
+        <AssociationConnector Association="NorthenLightsHopitalModel.FK_assurance_patient" ManuallyRouted="false" />
+        <AssociationConnector Association="NorthenLightsHopitalModel.FK_commentaire_patient_medecin" ManuallyRouted="false" />
+        <AssociationConnector Association="NorthenLightsHopitalModel.FK_commentaire_patient_patient" ManuallyRouted="false" />
+        <AssociationConnector Association="NorthenLightsHopitalModel.FK_lit_departement" ManuallyRouted="false" />
+        <AssociationConnector Association="NorthenLightsHopitalModel.FK_dossier_admission_client" ManuallyRouted="false" />
+        <AssociationConnector Association="NorthenLightsHopitalModel.FK_dossier_admission_lit" ManuallyRouted="false" />
+        <AssociationConnector Association="NorthenLightsHopitalModel.FK_dossier_admission_medecin" ManuallyRouted="false" />
+        <AssociationConnector Association="NorthenLightsHopitalModel.FK_employe_role" ManuallyRouted="false" />
+        <AssociationConnector Association="NorthenLightsHopitalModel.FK_lit_lit" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
