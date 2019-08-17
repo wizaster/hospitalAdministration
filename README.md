@@ -11,3 +11,6 @@ Doctors can search their patient list and send them home.
 Both can add comment to the patient file.
 
 Admins can add and remove employees.
+
+Once discharged from the hospital, the app create a invoice for the patient calculating 
+the number of days of his stay, the type of room and the amenities.
